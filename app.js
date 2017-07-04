@@ -81,14 +81,16 @@ mongoose.connect(connectionstring);
 //    , authMechanism: 'AMQPLAIN'
 //    , vhost: '/'
 //    , noDelay: true
+
+var amqpIPs = [];
 if(config.RabbitMQ.ip) {
-    config.RabbitMQ.ip = config.RabbitMQ.ip.split(",");
+    amqpIPs = config.RabbitMQ.ip.split(",");
 }
 
 
 var queueConnection = amqp.createConnection({
     //url: queueHost,
-    host: config.RabbitMQ.ip,
+    host: amqpIPs,
     port: config.RabbitMQ.port,
     login: config.RabbitMQ.user,
     password: config.RabbitMQ.password,
