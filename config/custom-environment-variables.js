@@ -48,8 +48,8 @@ module.exports = {
 
     "Host":
     {
-        "smsQueueName": "SMS_QUEUE_NAME"
-
+        "smsQueueName": "SMS_QUEUE_NAME",
+		"smsNumber": "SMS_NUMBER"
     },
 
     "Mongo":
