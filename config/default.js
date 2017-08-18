@@ -81,7 +81,7 @@ module.exports = {
 
   "RabbitMQ":
   {
-    "ip": "162.243.81.39,104.131.67.21",
+    "ip": "45.55.142.207",
     "port": 5672,
     "user": "admin",
     "password": "admin",
