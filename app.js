@@ -124,22 +124,24 @@ queueConnection.on('ready', function () {
             GetCallRule(message.company , message.tenant, message.from, message.to, "SMS", function(isDone, result){
                 if(isDone){
 
+                    message.from = config.Host.smsNumber;
                     if(result && result.ANI){
 
                         message.from = result.ANI;
-
-                        if(result && result.DNIS){
-                            message.to = result.DNIS;
-                        }
-
-                        SendSMS(message,  deliveryInfo.deliveryTag.toString('hex'), ack);
-
-                    }else{
-
-                        logger.error("There is no trunk number found system will proceed with default SMS number");
-                        message.from = config.Host.smsNumber;
-                        SendSMS(message,  deliveryInfo.deliveryTag.toString('hex'), ack);
                     }
+
+                    if(result && result.DNIS){
+                        message.to = result.DNIS;
+                    }
+
+                    SendSMS(message,  deliveryInfo.deliveryTag.toString('hex'), ack);
+
+                    // else{
+                    //
+                    //     logger.error("There is no trunk number found system will proceed with default SMS number");
+                    //
+                    //     SendSMS(message,  deliveryInfo.deliveryTag.toString('hex'), ack);
+                    // }
 
                 }else{
 
